@@ -7,17 +7,17 @@ This is a full-stack service built with **FastAPI** (Backend) and **React** (Fro
 ## Architecture Diagram
 ```mermaid
 graph TD
-    Client[React Frontend] -->|Axios JSON| API[FastAPI Server]
-    API -->|Auth| Security[Security Module (JWT)]
-    API -->|Logic| Service[Org Service]
+    Client["React Frontend"] -->|Axios JSON| API["FastAPI Server"]
+    API -->|Auth| Security["Security Module (JWT)"]
+    API -->|Logic| Service["Org Service"]
     
-    Service -->|Manage| MasterDB[(MongoDB Master DB)]
+    Service -->|Manage| MasterDB[("MongoDB Master DB")]
     
-    subgraph MasterDB
-        Users[Users Collection]
-        Orgs[Organizations Metadata]
-        OrgA[org_acme_corp Collection]
-        OrgB[org_beta_inc Collection]
+    subgraph MasterDB_Cluster["MasterDB"]
+        Users["Users Collection"]
+        Orgs["Organizations Metadata"]
+        OrgA["org_acme_corp Collection"]
+        OrgB["org_beta_inc Collection"]
     end
     
     Security -->|Verify| Users
